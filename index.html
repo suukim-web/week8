@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>Let's Dig!</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anonymous+Pro:ital,wght@0,400;0,700;1,400;1,700&family=Asta+Sans:wght@300..800&family=Noto+Sans+JP:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Orbit&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css" />
+
+  <style>
+* {margin: 0;
+  padding: 0;
+  box-sizing: border-box;}
+
+html, body {font-family: 'Orbit', sans-serif;}
+
+/* NAV */
+.nav {position: fixed;
+    top: 0;
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    text-align: center;
+
+    padding: 20px 0;
+    z-index: 10;
+
+    font-size: 15px;
+    color: white;
+    transition: color 0.3s;}
+
+.nav.scrolled {color: black;}
+.nav a {color: inherit;
+        text-decoration: none;}
+
+/* 표지 */
+.start {position: relative;
+        height: 100vh;
+        overflow: hidden;}
+
+/* VIDEO */
+.video-bg {position: fixed;
+          top: 0; left: 0;
+          width: 100%;
+          height: 100%;
+          z-index: -2;}
+
+.video-bg video {width: 100%;
+                height: 100%;
+                object-fit: cover;}
+
+/* TEXT */
+.content {position: relative;
+          top: 50%;
+          transform: translateY(-50%);
+          color: white;
+          width: 100%;
+          text-align: center;
+          z-index: 1;
+
+          overflow: hidden; /* 넘침 방지 */}
+
+.title {font-size: 220px; font-weight: 400;
+        display: inline-block;
+        justify-content: center;
+        white-space: normal;}
+
+/* 글자 */
+.title span {display: inline-block;
+
+            margin-right: -15px;
+
+            transition: transform 0.15s ease-out;}
+
+/* WHITE SECTION */
+.white-section {
+  background: linear-gradient(to bottom, #1EFFFB 0%, white 100%);
+  color: black;
+  position: relative;
+  z-index: 1;
+  padding-top: 150px;
+  padding-right: 40px;
+  padding-bottom: 200px;
+  padding-left: 90px;
+  background-attachment: fixed;}
+
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css");
+
+h2 {font-family: 'pretendard', sans-serif;
+    font-size: 65px;
+    font-weight: 700;
+    line-height: 1.4;
+    letter-spacing: -2px;}
+
+h3 {font-family: 'pretendard', sans-serif;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1.4;
+    letter-spacing: -2px;}
+
+p {font-family: 'pretendard', sans-serif;
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 1.7;
+    letter-spacing: -0.5px;
+    padding-top: 10px;}
+
+.circle-img {position: absolute;
+              right: 9%; top: 40%;
+              transform: translateY(-50%);
+              width: 650px;
+              transition: transform 0.25s ease-out;}
+.circle-img:hover {transform: translateY(-52%)
+                    scale(1.02);}
+
+/* about */
+.about{background: white; 
+        padding-top: 150px;
+        padding-left: 90px;
+        padding-bottom: 100px;}
+.edge{padding-top: 90px;}
+
+.about-section {
+  position: relative;
+}
+
+.aboutimages {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.aboutimages img {
+  position: absolute;
+  width: 180px;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.8);
+  transition: all 0.3s ease;
+}
+
+/* when we dig.. */
+.white-section.moving-bg{position: relative;
+                        padding-top: 110px; 
+                        padding-bottom: 0px;}
+.moving-bg {position: relative; overflow: hidden;}
+.bg-marquee {position: absolute;
+              top: 0; left: 0;
+              width: 100%; height: 100%;
+              pointer-events: none;
+              z-index: 0;}
+.track1 {animation-duration: 5s;}
+.track2 {animation-duration: 20s;}
+.track3 {animation-duration: 15s;}
+.bg-track {display: flex;
+            white-space: nowrap;
+
+            animation: bgScroll 10s linear infinite;}
+.bg-track span {font-family: 'pretendard', sans-serif;
+                font-size: 250px; font-weight: 700;
+                color: rgba(0,0,0,0.08);
+                margin-right: 80px;}
+/*animation*/
+@keyframes bgScroll {0% {transform: translateX(0%);}
+                100% {transform: translateX(-50%);}}
+
+.content-front {position: relative;
+                z-index: 1;
+                min-height: 600px;}
+
+.center,.center2{text-align: center;
+        padding-top: 0px;}
+.mutter {font-size: 18px;
+        position: absolute;
+        right: 200px;
+        top: 60%;
+        transform: translateY(-50%);}
+.girl {position: absolute;
+        left: -90px;
+        bottom: 0;
+        width: 1200px;
+        z-index: 1;}
+
+
+.now {color: white;
+      padding-top: 150px;
+  padding-right: 40px;
+  padding-bottom: 200px;
+  padding-left: 90px;
+  text-align: center;}
+/* .boys {position: absolute;
+      width: 106%;
+      left: -90px;} */
+
+.center2 {display: inline-block;
+        padding: 20px 40px;
+
+        border-radius: 50px;
+        border: 2px solid rgba(255,255,255,0.8);
+
+        color: white;
+        font-size: 70px;
+        font-weight: 700;
+
+        /* 💥 핵심: 빛나는 효과 */
+        box-shadow:
+        0 0 10px rgba(255,255,255,0.8),
+        0 0 20px rgba(255,255,255,0.6),
+        0 0 40px rgba(255,255,255,0.4);}
+
+.letsdig {text-align: right;}
+
+
+
+.calendar-section {position: relative;
+                  height: 130vh;
+                  overflow: visible;
+                  padding-bottom: 1200px;}
+
+/* 텍스트 */
+.calendar-text {text-align: right;
+              position: absolute;
+  top: 120px;
+  right: 90px;
+  color: white;
+
+  z-index: 3;}
+
+.calendar-box {position: absolute;
+
+  bottom: -300px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 100%;
+  max-width: none;
+  z-index: 20;}
+
+/* 이미지 */
+.calendar-box img {width: 100%;
+                  display: block;}
+
+.map{
+  background: linear-gradient(to bottom, #1EFFFB 0%,
+    #bafdf8 12%,
+    white 28%,
+    white 78%,
+    #c8faf7 92%,
+    #1EFFFB 100%);
+  padding: 120px 0;}
+
+/*상단*/
+.how-top{
+  width: 90%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom:140px;
+  margin-top: 80px;}
+
+.ooharu{width:420px;
+        margin-left: 150px;}
+
+.top-copy{
+          margin-right: 250px;}
+
+/*네트워크 맵*/
+.how-middle{width: 100%; position: relative;}
+.network{width: 100%; display: block; margin: 0 auto; position: relative;
+          
+          opacity: 0;
+          transform: translateY(-80px); /*아래에서 시작*/
+          transition: all 1.4s cubic-bezier(.22,1,.36,1);}     /*부드럽게*/
+
+/*1번과 2번 사이*/
+.overlap-1{margin-top: -500px;}
+.network2{width: 96%; margin-left: -40px;}
+/*2번과 3번 사이*/
+.overlap-2{margin-top: -370px;}
+.network.show{opacity: 1; transform: translateY(0);}
+
+/*하단*/
+.how-bottom{text-align: center;
+            margin-top:140px;
+            margin-bottom: 80px;}
+.last-network{margin-bottom: 150px;}
+.n1{z-index: 3;}
+.n2{z-index: 2;}
+.n3{z-index: 1;}
+
+.record{padding-top: 500px;
+        text-align: center;}
+
+/* RECORD SECTION */
+.record{padding-top: 500px;
+    text-align: center;
+    overflow: hidden;}
+
+.record-top{margin-bottom: 140px;}
+
+.record-middle{width: 100%;
+                position: relative;
+                padding-left: 0;}
+
+
+/* 공통 이미지 */
+.recordnet{width: 70%;
+          display: block;
+          margin: 0; margin-left: 0px;
+          position: relative;
+
+  opacity: 0;
+  transform: translateY(80px);
+  transition: all 1.4s cubic-bezier(.22,1,.36,1);}
+
+/* 등장 */
+.recordnet.show{opacity: 1;
+                transform: translateY(0);}
+
+.record{
+  padding:220px 0;
+  overflow:hidden;
+}
+
+/* intro */
+.record-intro{
+  text-align:center;
+  font-family: 'Orbit', sans-serif;
+  margin-top: 150px;}
+
+.record-intro .day-card{
+  margin-top:60px;
+}
+
+.record-intro .date{
+  font-family:'Orbit', sans-serif;
+  font-size:30px;
+  line-height:1.05;
+  margin-bottom:10px;
+  color: white;}
+
+.record-intro .title-big{
+  font-family:'Orbit', sans-serif;
+  font-size:30px;
+  line-height:1.5;
+  letter-spacing:-2px;
+  margin-bottom:10px;
+  color: white;
+}
+
+.record-intro .go-btn{
+  font-family:'Orbit', sans-serif;
+  font-size:58px;
+  padding:18px 55px;
+  border:none;
+  border-radius:999px;
+  background:#f2f2f2;
+  cursor:pointer;
+}
+.record-intro .go-btn{display: inline-block;
+                      font-family: 'Orbit', sans-serif;
+                      font-size: 40px; padding: 18px 52px;
+                      border-radius: 999px;
+                      background: #ffffff;}
+
+.day-card{
+  margin-top:60px;
+}
+
+#recordStart{
+  border:none;
+  background:#fff;
+  padding:16px 38px;
+  border-radius:40px;
+  font-size:28px;
+  cursor:pointer;
+}
+
+/* 전체 영역 */
+.record-wrap{
+  width:100%;
+  margin-top:120px;
+}
+
+/* 개별 카드 */
+.record-item{
+  width:100%;
+  position:relative;
+
+  opacity:0;
+  transform:translateY(80px);
+  transition:1.2s cubic-bezier(.22,1,.36,1);}
+
+.record-item.show{
+  opacity:1;
+  transform:translateY(0);}
+
+/* 이미지 */
+.record-img{
+  width:70%;
+  display:block;}
+
+/* 오른쪽 텍스트 */
+.record-copy{
+  position:absolute;
+  right:8%;
+  top:45%;
+  transform:translateY(-50%);
+  font-size:20px;}
+
+.item1{z-index: 4;}
+/* 간격 */
+.item2{
+  margin-top:-140px; z-index: 3;}
+
+.item3{
+  margin-top:-380px; z-index: 2;}
+
+.item4{
+  margin-top:-880px;
+  margin-bottom:-100px;
+  z-index: 1;}
+
+
+.glow-wrap{
+  display:inline-block;      /* 핵심 */
+  width:auto;
+  max-width:none;
+
+  padding:30px 50px;
+
+  margin:60px auto 0 auto;
+
+  border:1px solid rgba(255,255,255,.92);
+
+  box-shadow:
+    0 0 12px rgba(255,255,255,.95),
+    0 0 28px rgba(255,255,255,.65),
+    0 0 55px rgba(255,255,255,.28);
+
+  background:rgba(255,255,255,.03);}
+
+.glow-wrap::after{
+  content:'';
+  position:absolute;
+  inset:-3px;
+  border-radius:90px;
+
+  box-shadow:
+    0 0 30px rgba(255,255,255,.6),
+    0 0 60px rgba(255,255,255,.25);
+
+  opacity:.9;
+  pointer-events:none;
+}
+
+#recordStart{
+  background:#fff;
+  color:#000;
+  border:none;
+  border-radius:999px;
+  padding:10px 30px;
+  font-size:30px;
+  font-family:'Orbit', sans-serif;
+  cursor:pointer;
+  transition:all .28s ease;
+}
+
+#recordStart:hover{
+  background:#000;
+  color:#fff;
+  transform:scale(1.05);
+}
+
+
+.glow-wrap{
+  position:relative;
+  overflow:hidden;
+  border-radius:90px;
+}
+
+.card-video{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  z-index:0;
+}
+
+.card-content{
+  position:relative;
+  z-index:2;
+}
+
+.glow-wrap::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:rgba(255,255,255,0.08);
+  z-index:1;
+}
+
+.recommend{width: 80%;}
+.gogo{width: 100%;}
+
+html {scroll-behavior: smooth;}
+
+  </style>
+</head>
+
+
+
+<body>
+<section class="start">
+
+  <!-- NAV -->
+  <nav class="nav">
+    <a href="#about">About</a>
+    <a href="#dig">When we dig...</a>
+    <a href="#letsdig">Let’s dig!</a>
+    <a href="#how">How</a>
+    <a href="#review">Review</a>
+  </nav>
+
+  <!-- VIDEO -->
+  <div class="video-bg">
+    <video autoplay muted loop playsinline>
+      <source src="footage1.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <!-- TEXT -->
+  <div class="content">
+    <h1 class="title">
+      <span>L</span><span>e</span><span>t</span><span>'</span><span>s</span>
+      <span>&nbsp;</span>
+      <span>D</span><span>i</span><span>g</span><span>!</span>
+    </h1>
+  </div>
+
+</section>
+
+<section class="white-section">
+
+  <h2>하나의 취향에서, <br> 무한한 취향으로 </h2>
+  <p>음악, 이미지, 사람, 영화까지. <br>
+      취향을 가로지르는 디깅 플랫폼 </p>
+  <img src="diglogo.png" class="circle-img">
+
+</section>
+
+<section class="about-section" id="about">
+  <div class="aboutimages"></div>
+  <div class="about">
+    <h2>취향 찾기, 더는 막막하지 않아요.</h2>
+    <p class="edge">Let's Dig은 하나의 취향에서 다양한 콘텐츠로의<br>
+        확장을 돕는 디깅 도우미 플랫폼입니다. 음악, 이미지,<br>
+      사람, 흩어져 있던 취향을 하나의 흐름으로 연결해요.<br>
+      디깅하다 멈춰도 괜찮아요. 당신이 탐색한 경로를<br>
+      기록하고, 언제든 이어서 더 깊이 들어갈 수 있도록 도와줘요. <br>
+      막막했던 탐색 경험, 이제 Let's Dig에서 즐겨요!</p>
+  </div>
+</section>
+
+<section class="white-section moving-bg" id="dig">
+  <div class="bg-marquee">
+    <div class="bg-track track1">
+      <span>밴드 캠프, 애플 뮤직, 스포티파이, 인스타그램</span>
+    </div>
+
+    <div class="bg-track track2">
+      <span>핀터레스트, 비핸스, 왓챠피디아, 사운드클라우드</span>
+    </div>
+
+    <div class="bg-track track3">
+      <span>사운드클라우드, 스포티파이, 왓챠피디아, 애플뮤직</span>
+    </div>
+  </div>
+
+  <div class="content-front">
+    <h3 class="center">
+        플랫폼을 계속 옮겨야 하는 디깅, <br>
+        막막하고 지치지 않나요?</h3>
+    <img src="girl.png" class="girl">
+    <p class="mutter"> 음악은 애플뮤직... <br>
+        이미지는 핀터레스트...<br>
+        아티스트는 인스타그램...</p>
+  </div>
+</section>
+
+<section class="now" id="letsdig">
+  <div>
+    <h3 class="center2">
+    이젠, 하나의 취향에서 모든 콘텐츠로!</h3>
+  </div>
+</section>
+
+
+<section class="map how" id="how">
+
+  <div class="how-top">
+    <img src="ooharu.png" class="ooharu">
+
+    <h2 class="top-copy">
+      좋아하는 콘텐츠<br>
+      단 하나로,
+    </h2>
+  </div>
+
+  <div class="how-middle">
+
+      <img src="network1.png" class="network n1 reveal">
+      <img src="network2.png" class="network n2 overlap-1 network2 reveal">
+      <img src="network3.png" class="network n3 overlap-2 reveal last-network">
+  </div>
+
+  <div class="how-bottom">
+    <h2>
+      당신을 위한<br>
+      무한한 취향을<br>
+      누려보세요.
+    </h2>
+  </div>
+
+</section>
+
+
+<section class="calendar-section">
+  <div class="calendar-wrap">
+    <h2 class="calendar-text">
+      멈춰도 괜찮아요. <br> 
+      당신의 모든 걸 기억하니깐!</h2>
+
+    <div class="calendar-box">
+    <img src="calendar.png">
+  </div>
+  </div>
+</section>
+
+<section class="white-section record">
+
+  <div class="record-intro">
+    <h2>당신의 디깅 경로를 기록하여<br>맞춤 서비스를 제공해요.</h2>
+
+    <div class="day-card glow-wrap">
+
+  <video class="card-video" autoplay muted loop playsinline>
+    <source src="footage1.mp4" type="video/mp4">
+  </video>
+
+  <div class="card-content">
+    <div class="date">26.4.20</div>
+
+    <div class="title-big">
+      이미지<br>
+      탐색의 날!
+    </div>
+
+    <button id="recordStart" class="go-btn">Go →</button>
+  </div>
+
+</div>
+
+  <div class="record-wrap">
+
+    <div class="record-item item1">
+      <img src="recordnet1.png" class="record-img">
+      <div class="record-copy">The Flow of Digging<br> on 2026.04.20</div>
+    </div>
+
+    <div class="record-item item2">
+      <img src="recordnet2.png" class="record-img">
+      <div class="record-copy">Alternative Musics</div>
+    </div>
+
+    <div class="record-item item3">
+      <img src="recordnet3.png" class="record-img">
+      <div class="record-copy">Books and Illustrations</div>
+    </div>
+
+    <div class="record-item item4">
+      <img src="recordnet4.png" class="record-img">
+      <div class="record-copy">...</div>
+    </div>
+    <img src="recommend.png" class="recommend">
+  </div>
+
+</section>
+
+<section>
+  <img src="gogo.png" class="gogo">
+  <img src="gogo2.png" class="gogo">
+</section>
+
+<section class="white-section">
+  <div>
+    <h3>찾았다, 내 친구! <br>
+        취향 기반 유저를 연결해 드려요.</h3>
+  </div>
+</section>
+
+<section class="white-section" id="review">
+  <div>
+    <h3 class="center">수많은 만족 후기!</h3>
+  </div>
+</section>
+
+<section class="white-section">
+  <div>
+    <h2 class="center"> 경험해보세요. </h2>
+  </div>
+</section>
+
+
+
+
+
+
+<script>
+/* NAV 색 변경 */
+window.addEventListener("scroll", function() {
+  const nav = document.querySelector(".nav");
+
+  if (window.scrollY > window.innerHeight * 0.7) {
+    nav.classList.add("scrolled");
+  } else {
+    nav.classList.remove("scrolled");
+  }
+});
+
+/* 🔥 타이포 인터랙션 (안 깨지는 버전) */
+const spans = document.querySelectorAll(".title span");
+
+document.addEventListener("mousemove", (e) => {
+  spans.forEach(span => {
+    const rect = span.getBoundingClientRect();
+
+    const x = rect.left + rect.width / 2;
+    const y = rect.top + rect.height / 2;
+
+    const dx = e.clientX - x;
+    const dy = e.clientY - y;
+
+    const dist = Math.sqrt(dx * dx + dy * dy);
+
+    const max = 250; /* 🔥 범위 줄임 */
+
+    if (dist < max) {
+      const power = (max - dist) / max;
+
+  const maxMove = 100;  // 🔥 기존 20 → 60
+
+const moveX = Math.max(-maxMove, Math.min(maxMove, dx * power * 7));
+const moveY = Math.max(-maxMove, Math.min(maxMove, dy * power * 7));
+
+      const rotate = dx * power * 0.01;
+
+      span.style.transform = `
+        translate(${moveX}px, ${moveY}px)
+        rotate(${rotate}deg)
+      `;
+    } else {
+      span.style.transform = `translate(0,0) rotate(0deg)`;
+    }
+  });
+});
+
+const circle = document.querySelector(".circle-img");
+
+document.addEventListener("mousemove", (e) => {
+  const centerX = window.innerWidth / 2;
+  const centerY = window.innerHeight / 2;
+
+  const dx = e.clientX - centerX;
+  const dy = e.clientY - centerY;
+
+  // 🔥 여기 숫자가 핵심 (크게 하면 더 적극적)
+  const moveX = dx * 0.3;
+  const moveY = dy * 0.3;
+
+  circle.style.transform = `
+    translateY(-50%)
+    translate(${moveX}px, ${moveY}px)
+  `;
+});
+
+
+const images = [
+  "aboutimage1.png",
+  "aboutimage2.png",
+  "aboutimage3.png"
+];
+
+const container = document.querySelector(".aboutimages");
+const section = document.querySelector(".about");
+
+let lastTime = 0;
+
+section.addEventListener("mousemove", (e) => {
+  const now = Date.now();
+  if (now - lastTime < 120) return;
+  lastTime = now;
+
+  const img = document.createElement("img");
+
+  img.src = images[Math.floor(Math.random() * images.length)];
+
+  const rect = section.getBoundingClientRect();
+
+  const x = e.clientX - rect.left;
+  const y = e.clientY - rect.top;
+
+  img.style.left = x + "px";
+  img.style.top = y + "px";
+
+  const rotate = Math.random() * 40 - 20;
+
+  img.style.transform = `
+    translate(-50%, -50%)
+    rotate(${rotate}deg)
+    scale(1)
+  `;
+
+  img.style.opacity = 1;
+
+  container.appendChild(img);
+
+  setTimeout(() => {
+    img.style.opacity = 0;
+    img.style.transform += " scale(0.8)";
+  }, 400);
+
+  setTimeout(() => {
+    img.remove();
+  }, 800);
+});
+
+
+const reveals = document.querySelectorAll('.reveal');
+
+window.addEventListener('scroll', () => {
+
+  reveals.forEach(el => {
+    const top = el.getBoundingClientRect().top;
+    const trigger = window.innerHeight * 0.42;
+
+    if(top < trigger){
+      el.classList.add('show');
+    }
+  });
+
+});
+
+const btn = document.getElementById("recordStart");
+
+btn.addEventListener("click", ()=>{
+
+  const items = document.querySelectorAll(".record-item");
+
+  items.forEach((item,index)=>{
+
+    setTimeout(()=>{
+      item.classList.add("show");
+    }, index * 700);
+
+  });
+
+});
+</script>
+
+</body>
+</html>
